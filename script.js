@@ -14,11 +14,11 @@ const subtract = function(a, b) {
 }
 
 const multiply = function(a, b) {
-    // TODO: if one ob a or b is 0 return funny message
     return a * b;
 }
 
 const divide = function(a, b) {
+    if (a == 0 || b == 0) return 'Error';
     return Math.round(a / b * 10000) / 10000;
 }
 
@@ -36,8 +36,15 @@ const addAllEventListener = function() {
 
         if (e.target.classList.contains('button')) {
 
+            if (current.textContent === 'Error') current.textContent = '';
+
             if (
-                e.target.classList.contains('color') 
+                (
+                id === 'divide'
+                || id === 'multiply'
+                || id === 'subtract'
+                || id === 'add'
+                )
                 && current.textContent === ''
                 ) {
                 current.textContent = '0';
@@ -154,9 +161,8 @@ const addAllEventListener = function() {
                     break;
 
                 case id === 'equal':
-                    period = false;
                     if (operate !== '') {
-                        if (current.textContent != 0) {
+                        if (current.textContent !== '') {
                             output(
                                 '',
                                 operate(
@@ -208,7 +214,50 @@ const addAllEventListener = function() {
         }
     });
 
-    // TODO: add keyboard event listener
+    const clickEl = function(name) {
+    document.getElementById(name).click()
+    }
+    window.addEventListener('keydown', function(e) {
+        const key = e.key
+        switch (true) {
+            case !isNaN(key):
+                clickEl(key);
+                break;
+
+            case key === '.':
+                clickEl('period');
+                break;
+
+            case key === '/':
+                clickEl('divide');
+                break;
+            
+            case key === '*':
+                clickEl('multiply');
+                break;
+
+            case key === '+':
+                clickEl('add');
+                break;
+
+            case key === '-':
+                clickEl('subtract');
+                break;
+
+            case key === 'Enter':
+                clickEl('equal');
+                break;
+            
+            case key === 'Backspace'
+                && e.metaKey === true:
+                clickEl('ac');
+                break;
+            
+            case key === 'Backspace':
+                clickEl('del');
+                break;
+        }
+    });
 }
 
 addAllEventListener();

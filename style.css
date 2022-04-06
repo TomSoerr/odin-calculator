@@ -75,6 +75,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    position: relative;
 }
 
 #input {
@@ -100,4 +101,8 @@ body {
 
 #input .color:active {
     background-color: rgb(155, 200, 233); 
+}
+
+.button:hover {
+    transform: translateY(-0.2vh);
 }
