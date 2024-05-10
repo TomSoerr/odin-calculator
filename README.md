@@ -15,6 +15,7 @@ The calculator can:
 There is also key tracking and a list of numbers can be calculated in a row.
 
 ## Links
+- [Imprint](https://tomsoerr.github.io/#/impressum)
 - [Live Preview](https://tomsoerr.github.io/odin-calculator/)
 - Link to the [Assignment](https://www.theodinproject.com/lessons/foundations-calculator)
 - See my next [Project](https://github.com/TomSoerr/odin-sign-up-form)
